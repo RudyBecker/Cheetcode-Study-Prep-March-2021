@@ -80,6 +80,7 @@ const traverse = function (root) {
       result[level] = []
     }
     result[level].push(node.val) //otherwise start populating subarray with node values at respective level
+    //variable level determines the index at which we will be inserting the subarray into the result array, i.e. result[0] = root
 
     //run the function recursively, passing it current node's children and incrementing the level
     recursiveHelper(node.left, level+1);
