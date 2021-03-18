@@ -255,3 +255,125 @@ const findSuccessor = function(root, node) {
     return null
 }
 ```
+# Question #7 Connect Level Order Siblings
+## Time: O(n) --- Space: O(n)
+###### Given a binary tree, connect each node with its level order successor. The last node of each level should point to a null node
+```JavaScript
+class TreeNode {
+    constructor(value) {
+        this.value = value
+        this.left = null
+        this.right = null
+        this.next = null
+    }
+}
+const connectSiblings = (root) => {
+    if (root === null) {
+        return 
+    }
+    const queue = [root]
+    while (queue.length > 0) {
+        const size = queue.length
+        let previous = null
+
+        for (let i = 0; i < size; i++) {
+            current = queue.shift()
+
+            if (previous !== null) {
+                previous.next = current
+            }
+            previous = current
+
+            if (current.left !== null) {
+                queue.push(current.left)
+            }
+            if (current.right !== null) {
+                queue.push(current.right)
+            }
+        }
+    }
+
+}
+```
+# Question Problem Challenge #1 Connect All Level Order Siblings
+## Time: --- Space:
+###### Given a binary tree, connect each node with its level order successor. The last node of each level should point to the first node of the next level
+```JavaScript
+class TreeNode {
+    constructor(value) {
+        this.value = value
+        this.left = null
+        this.right = null
+        this.next = null
+    }
+}
+
+const levelOrderSiblings = (root) => {
+    if (root === null) {
+        return
+    }
+
+    const queue = [root]
+    let current = null
+    let previous = null
+
+    while (queue.length > 0) {
+        current = queue.shift()
+
+        if (previous !== null) {
+            previous.next = current
+        }
+        previous = current
+
+        if (current.left !== null) {
+            queue.push(current.left)
+        }
+        if (current.right !== null) {
+            queue.push(current.right)
+        }
+    }
+}
+```
+# Question Problem Challenge #2 Right View of a Binary Tree
+## Time: --- Space:
+###### Given a binary tree, return an array containing nodes in its right view. The right view of a binary tree is the set of nodes visible when the tree is seen from the right side.
+
+```JavaScript
+class TreeNode {
+    constructor(value) {
+        this.value = value
+        this.left = null
+        this.right = null
+    }
+}
+
+const rightView = (root) => {
+    let result = []
+
+    if (root === null) {
+        return result
+    }
+
+    const queue = [root]
+    while (queue.length > 0) {
+        const size = queue.length
+
+        for (let i = 0; i < size; i++;) {
+            current = queue.shift()
+
+            if (i === size - 1) {
+                result.push(current)
+            }
+
+            if (current.left !== null) {
+                queue.push(current.left)
+            }
+            if (current.right !== null) {
+                queue.push(curren.right)
+            }
+        }
+    }
+    return result
+}
+```
+
