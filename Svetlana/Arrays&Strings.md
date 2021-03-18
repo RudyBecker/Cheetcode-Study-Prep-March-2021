@@ -238,7 +238,11 @@ var lengthOfLongestSubstring = function (s) {
 };
 ```
 
-# Problem 6 - Almost Palindrome
+# Problem 6a - Valid Palindrome
+
+ADD HERE - REGEX
+
+# Problem 6b - Almost Palindrome
 
 Time: O(n);
 Space: O(1);
@@ -296,5 +300,50 @@ var strStr = function (haystack, needle) {
     }
   }
   return -1;
+};
+```
+
+# Problem 8 - Reverse Words in a String
+
+Time: O(N); Space = (O(N))
+
+Given an input string s, reverse the string word by word.
+For example, given s = "the sky is blue", return "blue is sky the".
+example 1: "the sky is blue"
+example 2: " the sky is blue "
+example 3: " "
+
+```Javascript
+const reverseWords = (str) => {
+  let words = str.split(' ');
+  let newStr = [];
+  for (let i = words.length - 1; i >= 0; i--) {
+    if (words[i] !== '') {
+      newStr.push(words[i]);
+    }
+  }
+  return newStr.join(' ');
+};
+```
+
+# Problem 9 - String to Integer (atoi)
+
+Implement atoi to convert a string to an integer.
+
+```Javascript
+const atoi = (str) => {
+  const trimmed = str.trim();
+  let place = 1;
+  let num = 0;
+  let isNeg = false;
+  for (let i = trimmed.length - 1; i >= 0; i--) {
+    if (trimmed[i] === '-') {
+      isNeg = true;
+    } else if (trimmed[i] !== ' ') {
+      num += trimmed[i] * place;
+      place *= 10;
+    }
+  }
+  return isNeg ? num * -1 : num;
 };
 ```
