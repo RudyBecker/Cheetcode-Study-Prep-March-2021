@@ -165,3 +165,127 @@ var isValidBST = function(root) {
 
 };
 ```
+
+# 2-D Arrays
+
+## 21. Rotten Oranges
+You are given an m x n grid where each cell can have one of three values:
+
+0 representing an empty cell,
+1 representing a fresh orange, or
+2 representing a rotten orange.
+Every minute, any fresh orange that is 4-directionally adjacent to a rotten orange becomes rotten.
+
+Return the minimum number of minutes that must elapse until no cell has a fresh orange. If this is impossible, return -1.
+
+Time: O(nm) | Space: O(r) where r is the maximum number of oranges rottings in any iteration
+```js
+var orangesRotting = function(grid) {
+    let minutesElapsed = 0;
+    let freshOranges = 0;
+    let rottenOrangesQueue = [];
+
+    // traverse the entire grid, determine # of fresh oranges and add rottens to queue
+    for (let row = 0; row < grid.length; row++) {
+        for (let col = 0; col < grid[0].length; col++) {
+            if (grid[row][col] === 2) {
+                rottenOrangesQueue.push([row, col]);
+            } else if (grid[row][col] === 1) {
+                freshOranges++;
+            }
+        }
+    }
+
+    const directions = [[0, 1], [0, -1], [1, 0], [-1, 0]];
+
+    while (rottenOrangesQueue.length > 0 && freshOranges > 0) {
+        const newlyRotten = rottenOrangesQueue.length;
+        for (let i = 0; i < newlyRotten; i++) {
+            const [row, col] = rottenOrangesQueue.shift();
+            directions.forEach(([rowCh, colCh]) => {
+                freshOranges -= rotAdjacentOrange(grid, row+rowCh, col+colCh, rottenOrangesQueue)
+            })
+        }
+
+        minutesElapsed++;
+    }
+
+    return freshOranges > 0 ? -1 : minutesElapsed;
+};
+
+
+function rotAdjacentOrange(grid, row, col, rottenOrangesQueue) {
+    if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length || grid[row][col] !== 1) return 0;
+    else {
+        grid[row][col] = 2;
+        rottenOrangesQueue.push([row, col]);
+        return 1;
+    }
+}
+```
+
+## 22. Walls And Gates
+You are given an m x n grid rooms initialized with these three possible values.
+
+-1 A wall or an obstacle.
+0 A gate.
+INF Infinity means an empty room. We use the value 231 - 1 = 2147483647 to represent INF as you may assume that the distance to a gate is less than 2147483647.
+
+Fill each empty room with the distance to its nearest gate. If it is impossible to reach a gate, it should be filled with INF.
+
+Time: O(MN) | Space: O(1) -- Queue will never have more than 4 elements
+```js
+var wallsAndGates = function(rooms) {
+    if (rooms.length ==0) return rooms;
+    const GATE = 0;
+    const WALL = -1;
+    const EMPTY = 2147483647;
+    const DIRECTIONS = [
+        [-1, 0],
+        [1,0],
+        [0,1],
+        [0,-1]
+    ];
+    function isNotInBounds(rooms, rows, cols, r, c){
+        return r < 0 || c < 0 || r >= rows || c >= cols;
+    }
+    function findDistanceToGate(rooms, rows, cols, r, c){
+        let queue = [[r,c]];
+        let distance =1;
+        while(queue.length > 0){
+            let levelLength = queue.length;
+            for(let i =0; i < levelLength; i++){
+                let [currR, currC] = queue.shift();
+                for(let j=0; j < DIRECTIONS.length; j++){
+                    let [changeR, changeC] = DIRECTIONS[j];
+                    let newR = currR + changeR;
+                    let newC = currC + changeC;
+                    //if its in bounds and if its empty room
+                    if(isNotInBounds(rooms, rows, cols, newR, newC)){
+                        continue;
+                    }
+                    //if distance is less than the value of the room
+                    // set room to new distance
+                    // add room to queue
+                    if(rooms[newR][newC] >= distance +1){
+                        rooms[newR][newC] = distance;
+                        queue.push([newR, newC])
+                    }
+                }
+            }
+            distance++;
+        }
+    }
+    let rows = rooms.length;
+    let cols = rooms[0].length;
+    for(let r = 0; r < rows; r++){
+        for(let c = 0; c < cols; c++){
+            if(rooms[r][c] === GATE){
+                findDistanceToGate(rooms, rows, cols, r, c)
+            }
+        }
+    }
+    return rooms;
+};
+
+```

@@ -206,3 +206,36 @@ const find_triplets = function(arr, left, target) {
   return count;
 }
 ```
+
+## Move Zeros To End
+This is not in the grokking but I saved my solution from another challenge which used two pointers
+
+Given an array of numbers, return the array with all 0 values moved to the end.
+
+Time: O(N) | Space: O(1)
+```js
+function zerosToEnd(arr) {
+  if (!arr || !arr.length) return [];
+  let zerosLeft = arr.reduce((zeros, num) => {
+    return num === 0 ? zeros+1 : zeros
+  }, 0)
+
+  let currIdx = swapIdx = arr.length-1;
+  while (zerosLeft > 0) {
+    if (arr[currIdx] === 0) {
+      swap(arr, currIdx, swapIdx);
+      swapIdx--;
+      zerosLeft--;
+    }
+    currIdx--;
+  }
+
+  return arr;
+}
+
+function swap(arr, idx1, idx2) {
+  temp = arr[idx1];
+  arr[idx1] = arr[idx2];
+  arr[idx2] = temp;
+}
+```
