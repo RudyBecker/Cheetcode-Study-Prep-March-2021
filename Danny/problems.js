@@ -463,3 +463,65 @@ const binary_search = function(arr, key) {
   }
   return -1;
 };
+
+// Valid Sudoku
+
+var isValidSudoku = function(board) {
+  // dictionaries:
+  const rows = new Array(9)
+  const columns = new Array(9)
+  const boxes = new Array(9)
+  for (let i = 0; i < 9; i++) {
+    rows[i] = {};
+    columns[i] = {};
+    boxes[i] = {};
+  }
+  for (let row = 0; row < board.length; row++) {
+      for (let col = 0; col < board[row].length; col++) {
+        const val = board[row][col];
+        const box = 3*Math.floor(row / 3) + Math.floor(col / 3);
+          if (val === '.') continue;
+          // console.log("row="+row, "col="+col, "box="+box, "val="+val)
+          if (rows[row][val] || columns[col][val] || boxes[box][val]) return false;
+          else {
+            // console.log("current row:", row, "| vals stores:", rows[row]);
+            rows[row][val] = true;
+            columns[col][val] = true;
+            boxes[box][val] = true;
+          }
+      }
+  }
+
+  return true;
+};
+
+// 0 0 0 1 1 1 2 2 2
+// 0 0 0 1 1 1 2 2 2
+// 0 0 0 1 1 1 2 2 2
+// 3 3 3 4 4 4 5 5 5
+// 3 3 3 4 4 4 5 5 5
+// 3 3 3 4 4 4 5 5 5
+
+const board =
+[["5","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]]
+const board2 =
+[["8","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]]
+
+console.log(isValidSudoku(board)) // true;
+console.log(isValidSudoku(board2)) // false;
