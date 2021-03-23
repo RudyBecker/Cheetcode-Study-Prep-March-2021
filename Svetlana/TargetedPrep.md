@@ -135,7 +135,7 @@ vco findDuplicate = function(paths) {
 };
 ```
 
-# Combination Sum
+# Combination Sum - this is a backtracking problem
 
 Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
 
@@ -185,7 +185,17 @@ Output: [[1,1]]
 
 ```
 
-# LRU Cache
+# LRU Cache with a Linked List
+
+Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
+
+Implement the LRUCache class:
+
+LRUCache(int capacity) Initialize the LRU cache with positive size capacity.
+
+int get(int key) Return the value of the key if the key exists, otherwise return -1.
+
+void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
 
 ```js
 // We need to implement a Linked List to
@@ -237,4 +247,53 @@ class LRUCache {
     }
   }
 }
+```
+
+# LRU Cache with Map
+
+!NB Map is an object that remembers the insertion order of key/val pairs.
+
+Hence, we delete/insert in order to mark an item as most recenctly used/inserted
+
+```js
+var LRUCache = function (capacity) {
+  this.max = capacity;
+  this.map = new Map();
+};
+LRUCache.prototype.get = function (key) {
+  if (this.map.has(key)) {
+    const tmp = this.map.get(key);
+    this.map.delete(key);
+    this.map.set(key, tmp);
+    return tmp;
+  }
+  return -1;
+};
+LRUCache.prototype.put = function (key, value) {
+  // if it has the key, delete it and update it with the new value (line 282)
+  if (this.map.has(key)) {
+    this.map.delete(key);
+    // if the key is not in the map, check capacity
+  } else if (this.map.size === this.max) {
+    // if at max capacity, evict the least recently used item
+    this.map.delete(this.map.keys().next().value);
+  }
+  //set the new key/val pair
+  this.map.set(key, value);
+};
+const lRUCache = new LRUCache(2);
+lRUCache.put(1, 1); // cache is {1=1}
+lRUCache.put(2, 2); // cache is {1=1, 2=2}
+lRUCache.get(1); // return 1
+lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
+lRUCache.get(2); // returns -1 (not found)
+lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
+lRUCache.get(1); // return -1 (not found)
+lRUCache.get(3); // return 3
+lRUCache.get(4); // return 4
+console.log(lRUCache); // LRUCache { max: 2, map: Map { 3 => 3, 4 => 4 } }
+console.log(lRUCache.map.keys()); // [Map Iterator] { 3, 4 }
+// THIS IS THE LEAST RECNELTY USED VALUE, THE ONE WE SHOULD EVICT
+console.log(lRUCache.map.keys().next()); // { value: 3, done: false }
+console.log(lRUCache.map.keys().next().value); // 3
 ```
