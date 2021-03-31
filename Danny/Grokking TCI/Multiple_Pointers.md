@@ -239,3 +239,35 @@ function swap(arr, idx1, idx2) {
   arr[idx2] = temp;
 }
 ```
+
+## Subarrays with a Product Less Than The Target
+
+Given an array with positive numbers and a target number, find all of its contiguous subarrays whose product is less than the target number.
+
+Time: O(N+S) | Space: O(S) where S is the number of valid subarrays
+
+```js
+const find_subarrays = function(arr, target) {
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    // init running product
+    let runningProduct = arr[i]; // 2
+    if (runningProduct >= target) continue;
+    const subarray = [];
+    subarray.push(arr[i]);
+    result.push(subarray);
+    recurse_subarrays(result, subarray.slice(), runningProduct, target, arr.slice(i+1));
+  }
+
+  return result;
+};
+
+const recurse_subarrays = function(result, subarray, runningProduct, target, arr) {
+  runningProduct *= arr[0];
+  if (arr.length && runningProduct < target) {
+    subarray.push(arr[0]);
+    result.push(subarray);
+    recurse_subarrays(result, subarray.slice(), runningProduct, target, arr.slice(1))
+  }
+}
+```
