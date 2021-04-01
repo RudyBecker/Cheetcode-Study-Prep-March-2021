@@ -1,4 +1,4 @@
-// Foind the length of the longest substring with no repeating characters
+// Find the length of the longest substring with no repeating characters
 
 // Sliding Window
 // Left and right pointer
@@ -38,6 +38,86 @@ const longestSubstr = function (str) {
   return runningLongest;
 }
 
-console.log(longestSubstr('abcabcbb')) // 3
-console.log(longestSubstr('abb')) // 2
-console.log(longestSubstr('bbbbbbbb')) // 1
+// console.log(longestSubstr('abcabcbb')) // 3
+// console.log(longestSubstr('abb')) // 2
+// console.log(longestSubstr('bbbbbbbb')) // 1
+
+// Generate All Valid Bracket Permutations given an integer representing the total number of bracket pairs to return
+// Return the result as a string
+
+const generateValidBrackets = function(n) {
+  if (!n) return [];
+  const queue = [];
+  queue.push({'brackets': ['('], 'unclosedBrackets': 1})
+  for (let i = 0; i < 2*n-1; i++) {
+    const queueLen = queue.length;
+    for (let j = 0; j < queueLen; j++) {
+      const perm = queue.shift();
+      if (perm.unclosedBrackets === 0) {
+        perm.brackets.push('(');
+        perm.unclosedBrackets++;
+        queue.push(perm);
+      } else if (2*n - perm.brackets.length === perm.unclosedBrackets) {
+        perm.brackets.push(')');
+        perm.unclosedBrackets--;
+        queue.push(perm);
+      } else {
+        const perm1 = {brackets: [...perm.brackets, '('], 'unclosedBrackets': perm.unclosedBrackets+1}
+        const perm2 = {brackets: [...perm.brackets, ')'], 'unclosedBrackets': perm.unclosedBrackets-1}
+        queue.push(perm1);
+        queue.push(perm2);
+      }
+    }
+  }
+  const validBrackets = []
+  for (let i = 0; i < queue.length; i++) {
+    validBrackets.push(queue[i].brackets.join(''))
+  }
+  return validBrackets;
+}
+
+// const example1 = generateValidBrackets(1); // ()
+// const example2 = generateValidBrackets(2); // ()(), (())
+// const example3 = generateValidBrackets(3); // ()()(), (()()), ((())), (())(), ()(())
+
+// console.log(example1)
+// console.log(example2)
+// console.log(example3)
+
+// Implemented Recursively
+
+const generateRecursedBrackets = function(n) {
+  if (!n) return [];
+  const validBrackets = [];
+  generateBrackets(validBrackets, n, '(', 1);
+
+  return validBrackets;
+}
+
+const generateBrackets = function(validBrackets, n, permutation, unclosedBrackets) {
+  if (permutation.length === n * 2) {
+    validBrackets.push(permutation);
+    return;
+  }
+
+  // 3 cases: add an opening bracket, add a closing bracket, or add both
+  if (unclosedBrackets === 0) {
+    // open
+    generateBrackets(validBrackets, n, permutation+'(', unclosedBrackets+1)
+  } else if (n * 2 - permutation.length === unclosedBrackets) {
+    //close
+    generateBrackets(validBrackets, n, permutation+')', unclosedBrackets-1)
+  } else {
+    // both
+    generateBrackets(validBrackets, n, permutation+'(', unclosedBrackets+1)
+    generateBrackets(validBrackets, n, permutation+')', unclosedBrackets-1)
+  }
+}
+
+const example1 = generateRecursedBrackets(1); // ()
+const example2 = generateRecursedBrackets(2); // ()(), (())
+const example3 = generateRecursedBrackets(3); // ()()(), (()()), ((())), (())(), ()(())
+
+console.log(example1)
+console.log(example2)
+console.log(example3)

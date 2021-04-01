@@ -271,3 +271,28 @@ const recurse_subarrays = function(result, subarray, runningProduct, target, arr
   }
 }
 ```
+
+## Minimum Window Sort
+
+Given an array, find the length of the smallest subarray in it which when sorted will sort the whole array.
+
+```js
+const shortest_window_sort = function(arr) {
+  const sorted = arr.slice().sort((a, b) => a-b);
+  let first = null;
+  let last = null;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== sorted[i]) {
+      if (first === null) {
+        first = i;
+      } else {
+        last = i;
+      }
+    }
+  }
+
+  if (first === null) return 0;
+  else if (last === null) return 1;
+  else return last-first+1;
+};
+```
