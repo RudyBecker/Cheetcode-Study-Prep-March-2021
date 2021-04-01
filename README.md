@@ -2,6 +2,14 @@
 
 The purpose of this repo is twofold: one, to give you a single canonical listing of everything you will be learning in the class, and two, to give you a structured approach to review what you have learned. If you find yourself unsure about what you should be studying, check here!
 
+Material: 
+1. https://www.udemy.com/course/master-the-coding-interview-big-tech-faang-interviews 
+2. https://www.educative.io/courses/grokking-the-coding-interview
+3. https://www.amazon.com/System-Design-Interview-insiders-Second/dp/B08CMF2CQF
+
+Optional:
+1. https://backtobackswe.com
+2. Leetcode Premium 
 
 # Video Course 
 
@@ -98,33 +106,44 @@ We will Cover 14 Paterns to help with pattern matching.
 
 ### Pattern: Cyclic Sort (8)
 - Cyclic Sort (easy): new (​link​)
-- Find the Missing Number (easy): LC 268 Find all Missing Numbers (easy): LC 448 Find the Duplicate Number (easy): LC 287 Find all Duplicate Numbers (easy): LC 442 Problem Challenge 1: LC 645
+- Find the Missing Number (easy): LC 268 
+- Find all Missing Numbers (easy): LC 448 
+- Find the Duplicate Number (easy): LC 287 
+- Find all Duplicate Numbers (easy): LC 442 
+- Problem Challenge 1: LC 645
 - Problem Challenge 2: LC 41
 - Problem Challenge 3: new (​link​)
 
 ### Pattern: In-place Reversal of a LinkedList (5)
 - Reverse a LinkedList (easy): LC 206
 - Reverse a Sub-list (medium): LC 92
-- Reverse every K-element Sub-list (medium): LC 25 Problem Challenge 1: new (​link​)
+- Reverse every K-element Sub-list (medium): LC 25 
+- Problem Challenge 1: new (​link​)
 - Problem Challenge 2: LC 61
 
 ### Pattern: Tree Breadth First Search (9)
-- Binary Tree Level Order Traversal (easy): LC 102 Reverse Level Order Traversal (easy): LC 107
+- Binary Tree Level Order Traversal (easy): LC 102
+- Reverse Level Order Traversal (easy): LC 107
 - Zigzag Traversal (medium): LC 103
-- Level Averages in a Binary Tree (easy): LC 637 Minimum Depth of a Binary Tree (easy): LC 111, LC 104 Level Order Successor (easy): new (​link​)
-- Connect Level Order Siblings (medium): LC 117 Problem Challenge 1: new (​link​)
+- Level Averages in a Binary Tree (easy): LC 637 
+- Minimum Depth of a Binary Tree (easy): LC 111, LC 104 
+- Level Order Successor (easy): new (​link​)
+- Connect Level Order Siblings (medium): LC 117
+- Problem Challenge 1: new (​link​)
 - Problem Challenge 2: LC 199
 
 ###  Pattern: Tree Depth First Search (7)
 - Binary Tree Path Sum (easy): LC 112
-- All Paths for a Sum (medium): LC 113, LC 257, new (​link​) Sum of Path Numbers (medium): LC 129
+- All Paths for a Sum (medium): LC 113, LC 257, new (​link​) 
+- Sum of Path Numbers (medium): LC 129
 - Path With Given Sequence (medium): LC 1430
 - Count Paths for a Sum (medium): LC 437
 - Problem Challenge 1: LC 543
 - Problem Challenge 2: LC 124
 
 ### Pattern: Two Heaps (4)
-- Find the Median of a Number Stream (medium): LC 295 Sliding Window Median (hard): LC 480
+- Find the Median of a Number Stream (medium): LC 295
+- Sliding Window Median (hard): LC 480
 - Maximize Capital (hard): LC 502
 - Problem Challenge 1: LC 436
 
@@ -132,27 +151,35 @@ We will Cover 14 Paterns to help with pattern matching.
 - Subsets (easy): LC 78
 - Subsets With Duplicates (easy): LC 90
 - Permutations (medium): LC 46
-- String Permutations by changing case (medium): LC 784 Balanced Parentheses (hard): LC 22
-- Unique Generalized Abbreviations (hard): LC 320 Problem Challenge 1: LC 241
+- String Permutations by changing case (medium): LC 784 
+- Balanced Parentheses (hard): LC 22
+- Unique Generalized Abbreviations (hard): LC 320 
+- Problem Challenge 1: LC 241
 - Problem Challenge 2: LC 95
 - Problem Challenge 3: LC 96
 
 ### Pattern: Modified Binary Search (10)
-- Order-agnostic Binary Search (easy): new (Approach 1 in ​link​) Ceiling of a Number (medium): new (​link​)
+- Order-agnostic Binary Search (easy): new (Approach 1 in ​link​) 
+- Ceiling of a Number (medium): new (​link​)
 - Next Letter (medium): LC 744
 - Number Range (medium): LC 34
-- Search in a Sorted Infinite Array (medium): LC 702 Minimum Difference Element (medium): LC 658 (k == 1) Bitonic Array Maximum (easy): new (​link​)
+- Search in a Sorted Infinite Array (medium): LC 702 
+- Minimum Difference Element (medium): LC 658 (k == 1) 
+- Bitonic Array Maximum (easy): new (​link​)
 - Problem Challenge 1: new (​link​)
 - Problem Challenge 2: LC 33, LC 81
 - Problem Challenge 3: LC 153, LC 154
 
 ### Pattern: Bitwise XOR (4)
 - Single Number (easy): LC 136
-- Two Single Numbers (medium): LC 260 Complement of Base 10 Number (medium): LC 476 Problem Challenge 1: LC 832
+- Two Single Numbers (medium): LC 260 
+- Complement of Base 10 Number (medium): LC 476 
+- Problem Challenge 1: LC 832
 
 ### Pattern: Top 'K' Elements (14)
 - Top 'K' Numbers (easy): new (​link​)
-- Kth Smallest Number (easy): LC 215 (smallest instead of largest) 'K' Closest Points to the Origin (easy): LC 973
+- Kth Smallest Number (easy): LC 215 (smallest instead of largest) 
+- 'K' Closest Points to the Origin (easy): LC 973
 - Connect Ropes (easy): LC 1167
 - Top 'K' Frequent Numbers (medium): LC 347
 - Frequency Sort (medium): LC 451
@@ -174,15 +201,18 @@ We will Cover 14 Paterns to help with pattern matching.
 
 ### Pattern : 0/1 Knapsack (Dynamic Programming) (6)
 - 0/1 Knapsack (medium): new (​link​)
-- Equal Subset Sum Partition (medium): LC 416 Subset Sum (medium): new (​link​)
-- Minimum Subset Sum Difference (hard): new (​link​) Problem Challenge 1: new (​link​)
+- Equal Subset Sum Partition (medium): LC 416 
+- Subset Sum (medium): new (​link​)
+- Minimum Subset Sum Difference (hard): new (​link​) 
+- Problem Challenge 1: new (​link​)
 - Problem Challenge 2: LC 494- 
 
 ### Pattern: Topological Sort (Graph) (7)
 - Topological Sort (medium): new (​link​)
 - Tasks Scheduling (medium): LC 207
 - Tasks Scheduling Order (medium): LC 210
-- All Tasks Scheduling Orders (hard): LC 210 (output all possible solutions) Alien Dictionary (hard): LC 269
+- All Tasks Scheduling Orders (hard): LC 210 (output all possible solutions)
+- Alien Dictionary (hard): LC 269
 - Problem Challenge 1: LC 444 Problem Challenge 2: LC 310
 - Miscellaneous (1)
 - Kth Smallest Number (hard): LC 215 (smallest instead of largest)
@@ -191,7 +221,6 @@ We will Cover 14 Paterns to help with pattern matching.
 # Clean Code Handbook
 
 We will use the Clean code handbook to review 50 Problems. 
-
 For each problem you study, add YOUR own version of the code using markdown. You will use this as a study aid for years to come. 
 
 
